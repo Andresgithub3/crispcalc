@@ -131,6 +131,15 @@ export default function PrivacyPage() {
               share a link to a specific conversion), not in persistent
               storage.
             </p>
+            <p>
+              The one exception is a single local-storage entry named{" "}
+              <code className="rounded bg-muted px-1 py-0.5 font-mono text-sm">
+                crispcalc-consent
+              </code>{" "}
+              that remembers whether you accepted or rejected
+              non-essential cookies so we don&rsquo;t prompt you on every
+              page. Clearing your browser storage resets the banner.
+            </p>
           </Section>
 
           <Section title="Your rights">

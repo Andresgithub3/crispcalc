@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
 import {
@@ -6,6 +5,7 @@ import {
   getPresetResult,
   type FoodPreset,
 } from "@/content/foods";
+import { TrackedLink } from "@/components/site/TrackedLink";
 
 /**
  * Editorial grid of food preset cards. Links to `/foods/[slug]` pages.
@@ -33,7 +33,9 @@ function PresetCard({ preset }: { preset: FoodPreset }) {
     defaults.unit === "C" ? result.airFryerTempC : result.airFryerTempF;
 
   return (
-    <Link
+    <TrackedLink
+      kind="food"
+      slug={slug}
       href={`/foods/${slug}`}
       className="group relative flex h-full flex-col justify-between gap-6 rounded-xl border border-border bg-card p-5 ring-1 ring-transparent transition-colors hover:border-primary/40 hover:ring-primary/20"
     >
@@ -70,6 +72,6 @@ function PresetCard({ preset }: { preset: FoodPreset }) {
           </dd>
         </div>
       </dl>
-    </Link>
+    </TrackedLink>
   );
 }

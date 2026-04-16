@@ -27,6 +27,10 @@ import {
   type ConversionResult,
   type TempUnit,
 } from "@/lib/converter";
+import {
+  trackConversion,
+  trackResultCopied,
+} from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
@@ -113,6 +117,19 @@ export function ConverterCalculator({
     });
   }, [debounced]);
 
+  // Fire `conversion_calculated` once per meaningful input change.
+  useEffect(() => {
+    if (!result) return;
+    trackConversion({
+      ovenTempF: toFahrenheit(debounced.temp, debounced.unit),
+      ovenTimeMin: debounced.time,
+      airFryerTempF: result.airFryerTempF,
+      airFryerTimeMin: result.airFryerTimeMin,
+      foodType: debounced.food,
+      fryerModel: debounced.fryer,
+    });
+  }, [result, debounced]);
+
   // URL sync — client-only, non-pushing, no scroll jump.
   const lastUrlRef = useRef<string | null>(null);
   useEffect(() => {
@@ -150,11 +167,12 @@ export function ConverterCalculator({
     try {
       await navigator.clipboard.writeText(text);
       setCopied(true);
+      trackResultCopied(state.food);
       window.setTimeout(() => setCopied(false), 2000);
     } catch {
       // Silent — browsers without Clipboard API will simply not flash the check.
     }
-  }, [result, state.unit]);
+  }, [result, state.unit, state.food]);
 
   const displayTemp =
     result === null

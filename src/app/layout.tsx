@@ -1,7 +1,13 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import "./globals.css";
+import { ConsentBanner } from "@/components/site/ConsentBanner";
+import { AdSenseScript } from "@/components/ads/AdSenseScript";
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://crispcalc.com";
@@ -9,6 +15,10 @@ const SITE_NAME = "CrispCalc";
 const SITE_TAGLINE = "The air fryer conversion calculator, done right.";
 const SITE_DESCRIPTION =
   "Convert any oven recipe to perfect air fryer settings in seconds — backed by the science of how air fryers actually cook.";
+
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+const ADSENSE_CLIENT_ID = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID;
+const IS_PROD = process.env.NODE_ENV === "production";
 
 const geistSans = Geist({
   variable: "--font-sans",
@@ -84,6 +94,26 @@ const websiteSchema = {
   inLanguage: "en-US",
 };
 
+/**
+ * Google Consent Mode v2 — default everything to "denied" before any
+ * ad/analytics tag fires. The ConsentBanner flips this to "granted"
+ * once the user accepts. Runs `beforeInteractive` so it lands ahead
+ * of GA's hydration script.
+ */
+const CONSENT_DEFAULT_SNIPPET = `
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag = window.gtag || gtag;
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+    wait_for_update: 500
+  });
+  gtag('set', 'ads_data_redaction', true);
+`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -94,8 +124,14 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      <head>
+        <Script id="consent-default" strategy="beforeInteractive">
+          {CONSENT_DEFAULT_SNIPPET}
+        </Script>
+      </head>
       <body className="min-h-full flex flex-col">
         {children}
+        <ConsentBanner />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -108,6 +144,12 @@ export default function RootLayout({
             __html: JSON.stringify(websiteSchema),
           }}
         />
+        {IS_PROD && GA_ID ? <GoogleAnalytics gaId={GA_ID} /> : null}
+        {IS_PROD && ADSENSE_CLIENT_ID ? (
+          <AdSenseScript clientId={ADSENSE_CLIENT_ID} />
+        ) : null}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

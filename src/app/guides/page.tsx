@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowUpRight, Clock } from "lucide-react";
 
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteHeader } from "@/components/site/SiteHeader";
+import { TrackedLink } from "@/components/site/TrackedLink";
 import { GUIDES } from "@/content/guides";
 
 const SITE_URL =
@@ -57,7 +58,9 @@ export default function GuidesIndexPage() {
           <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {GUIDES.map((guide) => (
               <li key={guide.slug}>
-                <Link
+                <TrackedLink
+                  kind="guide"
+                  slug={guide.slug}
                   href={`/guides/${guide.slug}`}
                   className="group flex h-full flex-col justify-between gap-6 rounded-xl border border-border bg-card p-6 transition-colors hover:border-primary/40"
                 >
@@ -82,7 +85,7 @@ export default function GuidesIndexPage() {
                     <Clock className="size-3.5" aria-hidden />
                     {guide.readingTime} min read
                   </p>
-                </Link>
+                </TrackedLink>
               </li>
             ))}
           </ul>

@@ -71,6 +71,9 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
+  verification: {
+    google: "dSuCxC_qXo60ZCiqjtGq7HgKy2boz-2lC-iAN-XAirk",
+  },
   category: "food",
 };
 

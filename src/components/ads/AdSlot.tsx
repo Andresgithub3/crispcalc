@@ -10,14 +10,15 @@
  * Slots only render in production with a configured client ID and a
  * per-slot ad slot ID pasted from the AdSense dashboard. In dev (or
  * when IDs are missing) we render a minimal placeholder so the layout
- * stays stable.
+ * stays stable. Consent Mode v2 (set up in the root layout) controls
+ * ad personalization, so we don't gate the `<ins>` itself on the
+ * consent cookie — AdSense still serves non-personalized ads when
+ * consent is denied, which is the intended GDPR behavior.
  */
 
 import { useEffect } from "react";
 
 import { cn } from "@/lib/utils";
-
-import { useConsentValue } from "@/components/site/ConsentBanner";
 
 const CLIENT_ID = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID;
 const IS_PROD = process.env.NODE_ENV === "production";
@@ -40,9 +41,7 @@ function AdSlotBase({
   fullWidthResponsive?: boolean;
   label: string;
 }) {
-  const consent = useConsentValue();
-  const canLoad =
-    IS_PROD && Boolean(CLIENT_ID) && Boolean(slotId) && consent === "granted";
+  const canLoad = IS_PROD && Boolean(CLIENT_ID) && Boolean(slotId);
 
   useEffect(() => {
     if (!canLoad) return;
@@ -55,7 +54,7 @@ function AdSlotBase({
     }
   }, [canLoad]);
 
-  if (!IS_PROD || !CLIENT_ID || !slotId) {
+  if (!canLoad) {
     return (
       <div
         aria-hidden

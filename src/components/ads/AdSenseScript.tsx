@@ -1,24 +1,19 @@
-"use client";
-
-/**
- * Lazy-loaded AdSense script (spec §9).
- *
- *   - Only loads in production (gated by caller) and only when a
- *     client ID is configured.
- *   - Uses `next/script` with `strategy="lazyOnload"` so the page is
- *     interactive before the ~200kB AdSense loader arrives. That keeps
- *     Core Web Vitals honest.
- *   - Waits for the user's explicit consent; if they rejected cookies
- *     we never load AdSense at all.
- *
- * Auto Ads are enabled by default — placement of individual slots is
- * handled by the `<AdSlot* />` components. You can toggle Auto Ads in
- * the AdSense dashboard without changing code.
- */
-
 import Script from "next/script";
 
-import { useConsentValue } from "@/components/site/ConsentBanner";
+/**
+ * AdSense loader (spec §9).
+ *
+ *   - Rendered only in production with a configured client ID (gated
+ *     in the root layout), so dev/preview builds stay script-free.
+ *   - `afterInteractive` defers loading until hydration has run —
+ *     keeps Core Web Vitals honest without being so late that
+ *     AdSense's verification crawler misses the script.
+ *   - Consent Mode v2 (initialised in the root layout to `denied`
+ *     by default) controls whether AdSense serves personalized or
+ *     non-personalized ads. We intentionally do *not* gate the
+ *     script tag itself on the consent cookie: AdSense's crawler
+ *     has no cookie, and gating the tag would fail site review.
+ */
 
 export const ADSENSE_SRC =
   "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
@@ -28,13 +23,10 @@ export interface AdSenseScriptProps {
 }
 
 export function AdSenseScript({ clientId }: AdSenseScriptProps) {
-  const consent = useConsentValue();
-  if (consent !== "granted") return null;
-
   return (
     <Script
       id="adsbygoogle-init"
-      strategy="lazyOnload"
+      strategy="afterInteractive"
       src={`${ADSENSE_SRC}?client=${encodeURIComponent(clientId)}`}
       crossOrigin="anonymous"
     />

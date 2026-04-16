@@ -132,13 +132,22 @@ export default function PrivacyPage() {
               storage.
             </p>
             <p>
-              The one exception is a single local-storage entry named{" "}
+              The one exception is a first-party cookie named{" "}
               <code className="rounded bg-muted px-1 py-0.5 font-mono text-sm">
-                crispcalc-consent
+                crispcalc_consent
               </code>{" "}
               that remembers whether you accepted or rejected
               non-essential cookies so we don&rsquo;t prompt you on every
-              page. Clearing your browser storage resets the banner.
+              page. It stores the string{" "}
+              <code className="rounded bg-muted px-1 py-0.5 font-mono text-sm">
+                granted
+              </code>{" "}
+              or{" "}
+              <code className="rounded bg-muted px-1 py-0.5 font-mono text-sm">
+                denied
+              </code>
+              , nothing else, and expires after one year. Clearing your
+              cookies resets the banner.
             </p>
           </Section>
 

@@ -5,8 +5,9 @@
  *
  * Google Consent Mode v2 is initialised to `denied` in the root layout
  * inline script. This component flips consent to `granted` on Accept
- * and keeps it `denied` on Reject. Either choice is persisted in
- * localStorage so the banner shows at most once per browser.
+ * and keeps it `denied` on Reject. The choice is persisted in a
+ * first-party cookie so the banner shows at most once per browser and
+ * the value is server-readable (spec §15).
  *
  * On change we emit `crispcalc:consent` on `window` so the AdSense
  * loader and ad slots can mount after the user has accepted.
@@ -17,8 +18,9 @@ import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 
-export const CONSENT_STORAGE_KEY = "crispcalc-consent";
+export const CONSENT_COOKIE_NAME = "crispcalc_consent";
 export const CONSENT_EVENT = "crispcalc:consent";
+const CONSENT_MAX_AGE_SECONDS = 60 * 60 * 24 * 365; // 1 year
 
 export type ConsentValue = "granted" | "denied";
 
@@ -31,34 +33,48 @@ type Gtag = (
 /* -----------------------------------------------------------------------
  * External-store hook for the consent value. Shared by the banner, the
  * AdSense loader, and the ad slot components via `useSyncExternalStore`
- * so React stays in sync with localStorage + the consent event without
+ * so React stays in sync with the cookie + the consent event without
  * the set-state-in-effect anti-pattern.
  * --------------------------------------------------------------------- */
 
-function readConsent(): ConsentValue | null {
-  if (typeof window === "undefined") return null;
-  try {
-    const stored = localStorage.getItem(CONSENT_STORAGE_KEY);
-    return stored === "granted" || stored === "denied" ? stored : null;
-  } catch {
-    return null;
-  }
+function readConsentCookie(): ConsentValue | null {
+  if (typeof document === "undefined") return null;
+  // document.cookie is `a=1; b=2; ...`. Parse minimally.
+  const match = document.cookie
+    .split("; ")
+    .find((c) => c.startsWith(`${CONSENT_COOKIE_NAME}=`));
+  if (!match) return null;
+  const value = decodeURIComponent(match.slice(CONSENT_COOKIE_NAME.length + 1));
+  return value === "granted" || value === "denied" ? value : null;
+}
+
+function writeConsentCookie(value: ConsentValue): void {
+  if (typeof document === "undefined") return;
+  const secure =
+    typeof location !== "undefined" && location.protocol === "https:"
+      ? "; Secure"
+      : "";
+  document.cookie =
+    `${CONSENT_COOKIE_NAME}=${value}` +
+    `; Max-Age=${CONSENT_MAX_AGE_SECONDS}` +
+    `; Path=/` +
+    `; SameSite=Lax${secure}`;
 }
 
 function subscribeConsent(onChange: () => void): () => void {
   if (typeof window === "undefined") return () => {};
   window.addEventListener(CONSENT_EVENT, onChange);
-  window.addEventListener("storage", onChange);
-  return () => {
-    window.removeEventListener(CONSENT_EVENT, onChange);
-    window.removeEventListener("storage", onChange);
-  };
+  return () => window.removeEventListener(CONSENT_EVENT, onChange);
 }
 
 const serverConsent: () => ConsentValue | null = () => null;
 
 export function useConsentValue(): ConsentValue | null {
-  return useSyncExternalStore(subscribeConsent, readConsent, serverConsent);
+  return useSyncExternalStore(
+    subscribeConsent,
+    readConsentCookie,
+    serverConsent,
+  );
 }
 
 function applyConsent(value: ConsentValue): void {
@@ -74,11 +90,7 @@ function applyConsent(value: ConsentValue): void {
     });
   }
 
-  try {
-    localStorage.setItem(CONSENT_STORAGE_KEY, value);
-  } catch {
-    // Private mode / storage disabled — choice will just re-prompt.
-  }
+  writeConsentCookie(value);
 
   window.dispatchEvent(
     new CustomEvent<ConsentValue>(CONSENT_EVENT, { detail: value }),

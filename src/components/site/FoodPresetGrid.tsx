@@ -1,13 +1,18 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
-import { FOOD_PRESETS, type FoodPreset } from "@/content/foods";
+import {
+  FOOD_PRESETS,
+  getPresetResult,
+  type FoodPreset,
+} from "@/content/foods";
 
 /**
- * Editorial grid of food preset cards. Links to `/foods/[slug]` pages
- * built in Milestone 3. Each card shows the target air fryer settings
- * as a scannable teaser so users can lock in a conversion without
- * opening the linked page.
+ * Editorial grid of food preset cards. Links to `/foods/[slug]` pages.
+ *
+ * Each card shows the *derived air fryer* settings (via convert()) so
+ * users get the actual answer at-a-glance — not the oven inputs that
+ * feed the calculator.
  */
 export function FoodPresetGrid() {
   return (
@@ -23,6 +28,9 @@ export function FoodPresetGrid() {
 
 function PresetCard({ preset }: { preset: FoodPreset }) {
   const { slug, name, kicker, defaults } = preset;
+  const result = getPresetResult(preset);
+  const temp =
+    defaults.unit === "C" ? result.airFryerTempC : result.airFryerTempF;
 
   return (
     <Link
@@ -46,7 +54,7 @@ function PresetCard({ preset }: { preset: FoodPreset }) {
         <div className="flex items-baseline gap-1">
           <dt className="sr-only">Air fryer temperature</dt>
           <dd className="text-lg font-medium tabular-nums text-foreground">
-            {defaults.temp}°{defaults.unit}
+            {temp}°{defaults.unit}
           </dd>
         </div>
         <span aria-hidden className="text-border">
@@ -55,7 +63,7 @@ function PresetCard({ preset }: { preset: FoodPreset }) {
         <div className="flex items-baseline gap-1">
           <dt className="sr-only">Air fryer cook time</dt>
           <dd className="text-lg font-medium tabular-nums text-foreground">
-            {defaults.time}
+            {result.airFryerTimeMin}
             <span className="ml-1 text-xs font-normal text-muted-foreground">
               min
             </span>

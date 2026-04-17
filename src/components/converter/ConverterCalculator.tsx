@@ -137,12 +137,14 @@ export function ConverterCalculator({
     if (!hasHydratedFromUrl) return;
     if (typeof window === "undefined") return;
 
-    const qs = calculatorStateToQueryString(debounced);
-    const next = `${window.location.pathname}?${qs}`;
+    const qs = calculatorStateToQueryString(debounced, initial);
+    const next = qs
+      ? `${window.location.pathname}?${qs}`
+      : window.location.pathname;
     if (lastUrlRef.current === next) return;
     lastUrlRef.current = next;
     window.history.replaceState(null, "", next);
-  }, [debounced, syncUrl, hasHydratedFromUrl]);
+  }, [debounced, syncUrl, hasHydratedFromUrl, initial]);
 
   // Flip °F ↔ °C: convert the current numeric input so the user doesn't
   // see a nonsense value when they change units mid-entry.

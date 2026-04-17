@@ -103,14 +103,18 @@ export function readCalculatorStateFromParams(
 
 /**
  * Serialize a CalculatorState to a query string (no leading `?`).
- * Deterministic key order so URL diffs are stable.
+ * Only includes params that differ from `defaults` so the URL stays
+ * clean when nothing has been changed.
  */
-export function calculatorStateToQueryString(state: CalculatorState): string {
+export function calculatorStateToQueryString(
+  state: CalculatorState,
+  defaults: CalculatorState = DEFAULT_CALCULATOR_STATE,
+): string {
   const params = new URLSearchParams();
-  params.set("temp", String(state.temp));
-  params.set("time", String(state.time));
-  params.set("unit", state.unit);
-  params.set("food", state.food);
-  params.set("fryer", state.fryer);
+  if (state.temp !== defaults.temp) params.set("temp", String(state.temp));
+  if (state.time !== defaults.time) params.set("time", String(state.time));
+  if (state.unit !== defaults.unit) params.set("unit", state.unit);
+  if (state.food !== defaults.food) params.set("food", state.food);
+  if (state.fryer !== defaults.fryer) params.set("fryer", state.fryer);
   return params.toString();
 }

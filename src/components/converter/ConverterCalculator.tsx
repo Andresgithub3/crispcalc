@@ -248,6 +248,18 @@ function TempField({
   onValueChange: (n: number) => void;
   onUnitChange: (u: TempUnit) => void;
 }) {
+  const [display, setDisplay] = useState(() =>
+    Number.isFinite(value) ? String(value) : "",
+  );
+  const focused = useRef(false);
+
+  // Sync from parent when not focused (e.g. unit toggle, URL hydration).
+  useEffect(() => {
+    if (!focused.current) {
+      setDisplay(Number.isFinite(value) ? String(value) : "");
+    }
+  }, [value]);
+
   return (
     <div className="flex flex-col gap-1.5">
       <Label
@@ -263,10 +275,18 @@ function TempField({
           inputMode="numeric"
           min={0}
           step={5}
-          value={Number.isFinite(value) ? value : ""}
+          value={display}
           onChange={(e) => {
+            const raw = e.currentTarget.value;
+            setDisplay(raw);
             const next = e.currentTarget.valueAsNumber;
             onValueChange(Number.isFinite(next) ? next : 0);
+          }}
+          onFocus={() => {
+            focused.current = true;
+          }}
+          onBlur={() => {
+            focused.current = false;
           }}
           className="h-12 flex-1 rounded-xl text-lg font-medium"
           aria-label="Oven temperature"
@@ -284,6 +304,17 @@ function TimeField({
   value: number;
   onValueChange: (n: number) => void;
 }) {
+  const [display, setDisplay] = useState(() =>
+    Number.isFinite(value) ? String(value) : "",
+  );
+  const focused = useRef(false);
+
+  useEffect(() => {
+    if (!focused.current) {
+      setDisplay(Number.isFinite(value) ? String(value) : "");
+    }
+  }, [value]);
+
   return (
     <div className="flex flex-col gap-1.5">
       <Label
@@ -299,10 +330,18 @@ function TimeField({
           inputMode="numeric"
           min={0}
           step={1}
-          value={Number.isFinite(value) ? value : ""}
+          value={display}
           onChange={(e) => {
+            const raw = e.currentTarget.value;
+            setDisplay(raw);
             const next = e.currentTarget.valueAsNumber;
             onValueChange(Number.isFinite(next) ? next : 0);
+          }}
+          onFocus={() => {
+            focused.current = true;
+          }}
+          onBlur={() => {
+            focused.current = false;
           }}
           className="h-12 w-full rounded-xl pr-20 text-lg font-medium"
           aria-label="Oven time in minutes"

@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
+import { AffiliateInline } from "@/components/affiliate/AffiliateInline";
+import { ContentWithSidebar } from "@/components/affiliate/ContentWithSidebar";
 import { ConverterCalculator } from "@/components/converter/ConverterCalculator";
 import { FoodPresetGrid } from "@/components/site/FoodPresetGrid";
 import { SiteFooter } from "@/components/site/SiteFooter";
@@ -19,10 +21,13 @@ export default function HomePage() {
       <SiteHeader />
 
       <main className="flex-1">
-        <Hero />
-        <Presets />
-        <HowItWorks />
-        <GuidesTeaser />
+        <ContentWithSidebar>
+          <Hero />
+          <Presets />
+          <AffiliateInline />
+          <HowItWorks />
+          <GuidesTeaser />
+        </ContentWithSidebar>
       </main>
 
       <SiteFooter />

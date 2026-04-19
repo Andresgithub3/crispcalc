@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowUpRight, ChevronRight, TriangleAlert } from "lucide-react";
 
+import { AffiliateInline } from "@/components/affiliate/AffiliateInline";
+import { ContentWithSidebar } from "@/components/affiliate/ContentWithSidebar";
 import { ConverterCalculator } from "@/components/converter/ConverterCalculator";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteHeader } from "@/components/site/SiteHeader";
@@ -88,13 +90,16 @@ export default async function FoodPresetPage({
       <SiteHeader />
 
       <main className="flex-1">
-        <Breadcrumb name={preset.name} />
-        <Hero preset={preset} result={result} />
-        <Article preset={preset} result={result} />
-        <Variations preset={preset} />
-        <FAQs preset={preset} />
-        <Related presets={related} />
-        <UpdatedStamp updatedAt={preset.updatedAt} />
+        <ContentWithSidebar>
+          <Breadcrumb name={preset.name} />
+          <Hero preset={preset} result={result} />
+          <Article preset={preset} result={result} />
+          <AffiliateInline />
+          <Variations preset={preset} />
+          <FAQs preset={preset} />
+          <Related presets={related} />
+          <UpdatedStamp updatedAt={preset.updatedAt} />
+        </ContentWithSidebar>
       </main>
 
       <SiteFooter />

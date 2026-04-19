@@ -9,6 +9,8 @@ import {
   TriangleAlert,
 } from "lucide-react";
 
+import { AffiliateInline } from "@/components/affiliate/AffiliateInline";
+import { ContentWithSidebar } from "@/components/affiliate/ContentWithSidebar";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteHeader } from "@/components/site/SiteHeader";
@@ -88,12 +90,15 @@ export default async function GuidePage({
       <SiteHeader />
 
       <main className="flex-1">
-        <Breadcrumb name={guide.title} />
-        <Hero guide={guide} />
-        <Body sections={guide.sections} />
-        <RelatedFoods foods={relatedFoods} />
-        <RelatedGuides guides={relatedGuides} />
-        <UpdatedStamp updatedAt={guide.updatedAt} />
+        <ContentWithSidebar>
+          <Breadcrumb name={guide.title} />
+          <Hero guide={guide} />
+          <Body sections={guide.sections} />
+          <AffiliateInline />
+          <RelatedFoods foods={relatedFoods} />
+          <RelatedGuides guides={relatedGuides} />
+          <UpdatedStamp updatedAt={guide.updatedAt} />
+        </ContentWithSidebar>
       </main>
 
       <SiteFooter />

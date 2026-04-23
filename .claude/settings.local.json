@@ -7,7 +7,17 @@
       "Bash(corepack prepare:*)",
       "Bash(npm install:*)",
       "Bash(git add:*)",
-      "WebFetch(domain:crispcalc.com)"
+      "WebFetch(domain:crispcalc.com)",
+      "Bash(npm run lint:*)",
+      "Bash(curl:*)",
+      "Bash(npm run build:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nfix\\(ads\\): use plain <script async>, not next/script, for AdSense loader\n\nnext/script with strategy=\"beforeInteractive\" in App Router does\nnot emit a literal <script async src=\".../adsbygoogle.js\"> tag in\nthe server HTML; it emits a <link rel=\"preload\"> plus a\nself.__next_s.push\\([...]\\) queue that Next''s runtime consumes after\nhydration. AdSense''s verification crawler looks for the literal\nscript tag, so verification still failed despite the URL being\npresent in the markup.\n\nReact 19 has built-in support for hoisting plain <script async>\nJSX elements to the document <head> as real <script async src>\nmarkup. That''s exactly what AdSense expects, so swap next/script\nfor a plain <script> element. We also drop the id prop \\(React 19\ndedupes by src, which is what we want\\).\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git push:*)",
+      "Bash(npx --yes resvg-cli:*)",
+      "Bash(npx resvg-cli:*)",
+      "Bash(npx tsc:*)",
+      "Bash(git checkout:*)",
+      "Bash(git merge:*)"
     ]
   }
 }

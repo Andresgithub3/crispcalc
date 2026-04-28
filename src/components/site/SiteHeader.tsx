@@ -44,6 +44,12 @@ export function SiteHeader() {
             Charts
           </Link>
           <Link
+            href="/charts/celsius-to-fahrenheit"
+            className="hidden transition-colors hover:text-foreground md:inline"
+          >
+            °C ↔ °F
+          </Link>
+          <Link
             href="/about"
             className="transition-colors hover:text-foreground"
           >

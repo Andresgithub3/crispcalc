@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-import { getFoodPreset, getPresetResult, FOOD_PRESETS } from "@/content/foods";
+import { getFoodPreset, getPresetResult } from "@/content/foods";
 
 /**
  * Per-food Open Graph image — shows the food name and the derived
@@ -17,15 +17,6 @@ const MUTED = "#6B6860";
 const PRIMARY = "#E85D2C";
 const ACCENT = "#F5B82E";
 const BORDER = "#E7E4DB";
-
-export function generateImageMetadata() {
-  return FOOD_PRESETS.map((preset) => ({
-    id: preset.slug,
-    alt: `Air fryer ${preset.name}: settings at a glance`,
-    contentType,
-    size,
-  }));
-}
 
 export default function Image({ params }: { params: { slug: string } }) {
   const preset = getFoodPreset(params.slug);

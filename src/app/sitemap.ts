@@ -46,7 +46,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${SITE_URL}/charts/celsius-to-fahrenheit`,
       lastModified: now,
       changeFrequency: "monthly",
-      priority: 0.6,
+      priority: 0.7,
     },
     {
       url: `${SITE_URL}/about`,

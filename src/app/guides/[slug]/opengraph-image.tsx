@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-import { GUIDES, getGuide } from "@/content/guides";
+import { getGuide } from "@/content/guides";
 
 export const alt = "CrispCalc guide";
 export const size = { width: 1200, height: 630 };
@@ -12,15 +12,6 @@ const MUTED = "#6B6860";
 const PRIMARY = "#E85D2C";
 const ACCENT = "#F5B82E";
 const BORDER = "#E7E4DB";
-
-export function generateImageMetadata() {
-  return GUIDES.map((guide) => ({
-    id: guide.slug,
-    alt: guide.title,
-    contentType,
-    size,
-  }));
-}
 
 export default function Image({ params }: { params: { slug: string } }) {
   const guide = getGuide(params.slug);

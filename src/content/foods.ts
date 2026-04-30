@@ -1035,6 +1035,288 @@ const REHEATED_PIZZA: FoodPreset = {
   updatedAt: "2026-04-16",
 };
 
+const CHICKEN_TENDERS: FoodPreset = {
+  slug: "chicken-tenders",
+  name: "Chicken tenders",
+  kicker: "Golden crust, juicy strips",
+  defaults: buildDefaults(425, 18, "raw_meat"),
+
+  metaDescription:
+    "Air fryer chicken tenders: exact time and temperature for fresh breaded and frozen. The breading trick that keeps the coating from falling off.",
+
+  intro:
+    "Chicken tenders are one of the most forgiving things you can put in an air fryer. The shape is perfect — thin enough to cook through fast, wide enough to hold a coating. Start from a 425°F / 18-minute oven recipe for homemade panko-crusted tenders and the calculator drops the heat just enough so the breading browns without the chicken drying out underneath it.",
+
+  tips: [
+    {
+      heading: "Three-step breading, no shortcuts.",
+      body: "Flour, egg wash, panko — in that order. The flour gives the egg something to grip; the egg gives the panko something to grip. Skip a step and the breading slides off in the basket. Pat the chicken dry before you start.",
+    },
+    {
+      heading: "Spray the coating, not the basket.",
+      body: "A light mist of oil on the breaded tenders — not a pour, a spray — is what turns panko from beige to golden. Two seconds per side with an oil spritzer is enough. The basket itself needs nothing if it's non-stick.",
+    },
+    {
+      heading: "Single layer, half-inch gaps.",
+      body: "Tenders that touch share a steam pocket between them and the breading goes soft at the contact point. A 4-quart basket fits about 5 tenders in one layer. Cook in rounds if you need more.",
+    },
+    {
+      heading: "Flip once at the check mark.",
+      body: "The bottom side sets against the basket grate and gets the best crunch. Flip at the calculator's check time so the other side catches up. Don't flip twice — every flip risks the breading lifting.",
+    },
+  ],
+
+  variations: {
+    title: "Fresh vs. frozen, breaded vs. plain",
+    rows: [
+      {
+        label: "Fresh, panko-breaded",
+        temp: 400,
+        time: 12,
+        note: "Flip at 8. Spray oil both sides.",
+      },
+      {
+        label: "Frozen (pre-cooked)",
+        temp: 400,
+        time: 10,
+        note: "No oil needed — already coated.",
+      },
+      {
+        label: "Frozen (raw, breaded)",
+        temp: 380,
+        time: 14,
+        note: "No thaw. Check internal 165°F.",
+      },
+      {
+        label: "Buttermilk-marinated, breaded",
+        temp: 390,
+        time: 13,
+        note: "Pat very dry before breading.",
+      },
+    ],
+  },
+
+  relatedSlugs: ["chicken-breast", "chicken-nuggets", "french-fries"],
+
+  faqs: [
+    {
+      q: "Why does my breading fall off?",
+      a: "Almost always because the chicken was wet when you breaded it, or because you skipped the flour step. The flour layer absorbs surface moisture and gives the egg wash something to bond to. Without it, the panko sits on a slippery surface and lifts in the fan.",
+    },
+    {
+      q: "Do I need to use panko specifically?",
+      a: "Panko gives the best crunch because the flakes are large, jagged, and dry. Regular breadcrumbs work but produce a denser, softer coating. Crushed cornflakes are a solid middle ground if you're out of panko.",
+    },
+    {
+      q: "Can I cook frozen tenders without thawing?",
+      a: "Yes. Most frozen tenders are pre-cooked and just need reheating — 400°F for 10 minutes straight from the freezer. Raw frozen tenders (less common) need 380°F for 14 minutes and a thermometer check to 165°F.",
+    },
+    {
+      q: "How do I keep them warm while cooking more batches?",
+      a: "A wire rack set over a sheet pan in a 200°F oven holds cooked tenders without steaming them. Paper towels trap moisture and undo the crunch you just earned.",
+    },
+    {
+      q: "Can I use an egg-free coating?",
+      a: "Yes — a thin layer of mayo or Dijon mustard binds panko nearly as well as egg wash. The flavor difference is minimal after cooking. For a vegan option, aquafaba (chickpea liquid) works.",
+    },
+    {
+      q: "What dipping sauces work best?",
+      a: "Honey mustard, ranch, and buffalo sauce are the standards. If you're making them for kids, ketchup wins every time no matter what you put in front of them.",
+    },
+  ],
+
+  yield: "Serves 2–3",
+  updatedAt: "2026-04-28",
+};
+
+const CHICKEN_NUGGETS: FoodPreset = {
+  slug: "chicken-nuggets",
+  name: "Chicken nuggets",
+  kicker: "Crispy from frozen, no defrost",
+  defaults: buildDefaults(400, 20, "frozen"),
+
+  metaDescription:
+    "Frozen chicken nuggets in the air fryer — exact time and temperature. Why they're better than the oven and the one shake that makes every nugget even.",
+
+  intro:
+    "Every bag of frozen chicken nuggets has oven instructions, and every parent who's followed them knows the result: pale, rubbery nuggets that took 20 minutes in a preheated oven. The air fryer fixes both problems. The nuggets crisp because the fan strips moisture from the pre-fried coating, and they're done before the oven would have finished preheating. Start from the bag's 400°F / 20-minute oven recipe and the calculator compresses it.",
+
+  tips: [
+    {
+      heading: "Shake at 6 minutes.",
+      body: "This is the single most important step. At 6 minutes the bottoms are set and the tops are still soft. One hard shake rotates them and the second side starts crisping. Skip this and you get half-golden, half-pale nuggets.",
+    },
+    {
+      heading: "No oil, no spray.",
+      body: "Frozen nuggets are already coated with oil from the factory par-fry. Adding more makes them greasy, not crispier. The coating has everything it needs — just give it airflow.",
+    },
+    {
+      heading: "Single layer, loose scatter.",
+      body: "Nuggets stacked on nuggets steam where they touch. A 4-quart basket holds about 15 standard nuggets in one layer with room to shake. For a family bag, cook in two rounds.",
+    },
+    {
+      heading: "Don't thaw them first.",
+      body: "Thawed nuggets lose their structural integrity — the coating gets soggy before it hits the heat. Straight from freezer to basket is the only way. The ice crystals flash off in the first two minutes and the coating is already setting by then.",
+    },
+  ],
+
+  variations: {
+    title: "By shape and brand",
+    rows: [
+      {
+        label: "Standard nuggets",
+        temp: 400,
+        time: 10,
+        note: "Shake at 6.",
+      },
+      {
+        label: "Dino nuggets / shapes",
+        temp: 400,
+        time: 9,
+        note: "Thinner — check at 7.",
+      },
+      {
+        label: "Popcorn chicken",
+        temp: 400,
+        time: 8,
+        note: "Small pieces, shake twice.",
+      },
+      {
+        label: "Plant-based nuggets",
+        temp: 390,
+        time: 10,
+        note: "Slightly lower — coating browns fast.",
+      },
+    ],
+  },
+
+  relatedSlugs: ["chicken-tenders", "french-fries", "frozen-pizza"],
+
+  faqs: [
+    {
+      q: "How long do frozen nuggets take in the air fryer?",
+      a: "About 8–10 minutes at 400°F, depending on size. Standard nuggets take 10 minutes; smaller shapes like dino nuggets or popcorn chicken finish in 8–9. Shake once at the 6-minute mark for even browning.",
+    },
+    {
+      q: "Do I need to preheat for frozen nuggets?",
+      a: "It helps but isn't critical. A 2-minute preheat gets you slightly crispier results. If you skip it, add a minute to the cook time. For nuggets, the difference is marginal.",
+    },
+    {
+      q: "Can I cook different brands together?",
+      a: "Yes, as long as they're roughly the same size. A bag of Tyson nuggets mixed with dino nuggets will cook unevenly because the shapes are different. Same-size, same-brand batches are the most predictable.",
+    },
+    {
+      q: "Why are mine still soft in the middle?",
+      a: "Either they were stacked (the middle ones steamed) or the fryer wasn't at temp when they went in. Cook in a single layer and give the fryer a minute to heat up first.",
+    },
+    {
+      q: "Are air-fried nuggets healthier than deep-fried?",
+      a: "Frozen nuggets were already fried once at the factory, so the fat is baked in. The air fryer doesn't add more fat, and some of the original fat drips away during cooking. The calorie difference is real but not dramatic — maybe 15–20% less fat than a second fry.",
+    },
+    {
+      q: "Can I reheat leftover nuggets?",
+      a: "Yes — 350°F for 3–4 minutes brings them back to crispy. The air fryer is the only reheating method that restores the crunch. Microwaves make them rubbery; ovens take too long for the payoff.",
+    },
+  ],
+
+  yield: "Serves 2–3",
+  updatedAt: "2026-04-28",
+};
+
+const SHRIMP: FoodPreset = {
+  slug: "shrimp",
+  name: "Shrimp",
+  kicker: "Fast sear, perfect curl",
+  defaults: buildDefaults(400, 12, "fish"),
+
+  metaDescription:
+    "Air fryer shrimp: exact time and temperature for raw, frozen, and breaded. Why shrimp is the fastest protein in the air fryer and how to nail the sear.",
+
+  intro:
+    "Shrimp is the fastest protein you can cook in an air fryer — and the easiest to overcook. The window between perfectly pink and rubbery is about 90 seconds, which is why the calculator pulls the time back aggressively from a 400°F / 12-minute oven recipe. The payoff is worth the attention: the air fryer sears the outside of each shrimp while the interior stays tender, something a sheet pan in a home oven rarely achieves.",
+
+  tips: [
+    {
+      heading: "Devein, dry, then season.",
+      body: "Deveining is non-negotiable for large shrimp — the vein is the digestive tract. After that, pat them dry with paper towels. Wet shrimp steam instead of searing, and you'll lose the surface texture that makes air-fried shrimp worth it.",
+    },
+    {
+      heading: "Watch for the C, not the O.",
+      body: "A properly cooked shrimp curls into a loose C shape. If it curls into a tight O or a ring, it's overcooked and the texture has gone rubbery. Pull the basket the moment most shrimp hit the C stage.",
+    },
+    {
+      heading: "One tablespoon of oil per pound.",
+      body: "Shrimp shells have no fat of their own. A light toss in oil — olive, avocado, whatever you have — helps the seasoning stick and gives the surface something to brown. More than a tablespoon per pound pools under the basket and smokes.",
+    },
+    {
+      heading: "Don't flip, just shake.",
+      body: "Shrimp are small enough that a hard shake of the basket rotates them sufficiently. Flipping each one with tongs wastes time the shrimp doesn't have — they cook fast enough that the 30 seconds you spend flipping is 30 seconds of overcooking.",
+    },
+  ],
+
+  variations: {
+    title: "By prep and starting state",
+    rows: [
+      {
+        label: "Raw, peeled (thawed)",
+        temp: 400,
+        time: 6,
+        note: "Shake at 4. Pull at the C curl.",
+      },
+      {
+        label: "Frozen, peeled",
+        temp: 380,
+        time: 9,
+        note: "No thaw. First 3 min to defrost.",
+      },
+      {
+        label: "Breaded / coconut",
+        temp: 390,
+        time: 10,
+        note: "Spray oil on breading. Flip at 6.",
+      },
+      {
+        label: "Jumbo / U-15 (shell-on)",
+        temp: 400,
+        time: 8,
+        note: "Shell protects the meat. Season after.",
+      },
+    ],
+  },
+
+  relatedSlugs: ["salmon", "chicken-wings", "brussels-sprouts"],
+
+  faqs: [
+    {
+      q: "Can I cook shrimp from frozen?",
+      a: "Yes. Frozen peeled shrimp go straight into the basket at 380°F for 9 minutes. The first 3 minutes are mostly thawing; the actual cook happens in the last 6. Don't thaw them under water first — they'll be waterlogged and won't sear.",
+    },
+    {
+      q: "Shell-on or shell-off?",
+      a: "Shell-on shrimp are more forgiving because the shell insulates the meat and slows overcooking. Shell-off is more convenient and lets seasoning touch the meat directly. For air frying specifically, shell-off with a light oil coat gives the best seared texture.",
+    },
+    {
+      q: "How do I know they're done?",
+      a: "Three signs: the color goes from translucent grey to opaque pink, the shape curls into a loose C (not a tight O), and the flesh is firm but not hard when you press it. If you have a thermometer, 120°F internal is the target.",
+    },
+    {
+      q: "What size shrimp works best?",
+      a: "26/30 count (about an inch long) or larger. Anything smaller than 40-count cooks in under 4 minutes and the margin for error is razor thin. Jumbo U-15 shrimp are the most forgiving because the larger mass gives you more time before overcooking.",
+    },
+    {
+      q: "Can I make coconut shrimp in the air fryer?",
+      a: "Yes, and it's one of the best uses. Bread with flour, egg, then shredded coconut mixed with panko. Spray both sides with oil. Cook at 390°F for 10 minutes, flipping at 6. The coconut toasts without the deep-fryer mess.",
+    },
+    {
+      q: "Why are mine tough and chewy?",
+      a: "Overcooked. Shrimp go from done to rubbery in about 90 seconds. Set a timer, pull them the moment the color changes, and let carryover heat finish the job. The inside will look slightly underdone — it's not, it's perfect.",
+    },
+  ],
+
+  yield: "Serves 2–3",
+  updatedAt: "2026-04-28",
+};
+
 /* ======================================================================
  * Exported array + lookups
  * ==================================================================== */
@@ -1050,6 +1332,9 @@ export const FOOD_PRESETS: readonly FoodPreset[] = [
   SWEET_POTATO_FRIES,
   MEATBALLS,
   REHEATED_PIZZA,
+  CHICKEN_TENDERS,
+  CHICKEN_NUGGETS,
+  SHRIMP,
 ] as const;
 
 export function getFoodPreset(slug: string): FoodPreset | undefined {

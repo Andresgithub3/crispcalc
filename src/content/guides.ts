@@ -562,6 +562,115 @@ const CONVERTING_BAKING: Guide = {
   ],
 };
 
+const PREHEATING: Guide = {
+  slug: "preheating-your-air-fryer",
+  kicker: "The debate",
+  title: "Do you actually need to preheat your air fryer?",
+  description:
+    "The answer is 'usually yes, sometimes no.' Here's when preheating matters, when it doesn't, and how long it actually takes.",
+  lead: "\"Do I need to preheat?\" is one of the most searched air fryer questions, and the answer most sites give — a flat \"yes\" or \"no\" — is wrong both ways. Preheating matters for some foods and actively hurts others. The distinction isn't complicated once you understand what the preheat actually does to the food's surface.",
+  readingTime: 6,
+  updatedAt: "2026-04-28",
+  sections: [
+    {
+      kind: "h2",
+      id: "what-preheating-does",
+      text: "What preheating actually does",
+    },
+    {
+      kind: "p",
+      text: "When you preheat an air fryer, the heating element runs for 2–3 minutes until the air inside the basket reaches the target temperature. The metal basket and grate absorb heat too. When food goes in, it immediately hits a hot surface and hot air simultaneously — the outside starts browning within seconds.",
+    },
+    {
+      kind: "p",
+      text: "Without a preheat, the food enters a cool basket and warms up alongside the air. The surface spends the first 2–3 minutes at a moderate temperature — warm enough to start cooking the interior, but not hot enough to dehydrate and brown the outside. For food where you want a seared exterior and a juicy interior, those 2–3 minutes of lukewarm surface cooking are the difference between a golden crust and a pale, evenly-cooked piece of protein.",
+    },
+    {
+      kind: "h2",
+      id: "when-to-preheat",
+      text: "When preheating matters",
+    },
+    {
+      kind: "list",
+      items: [
+        "Fresh proteins — chicken breasts, steaks, pork chops, shrimp. These benefit most because you want the surface to sear before the interior overcooks. A hot basket gives you the temperature gradient that makes the outside brown while the inside stays pink or juicy.",
+        "Anything you want charred — Brussels sprouts, broccoli, asparagus. The initial sizzle against the hot grate is where the restaurant-style char comes from.",
+        "Thin items that cook in under 10 minutes. With a short total cook time, the 2–3 minutes spent warming up is a significant percentage of the total. Shrimp cooked without a preheat spend nearly half their cook time below browning temperature.",
+        "Reheating. Pizza, leftovers, anything you want to re-crisp. A hot basket crisps the bottom immediately instead of warming it slowly from both sides.",
+      ],
+    },
+    {
+      kind: "h2",
+      id: "when-to-skip",
+      text: "When to skip the preheat",
+    },
+    {
+      kind: "list",
+      items: [
+        "Frozen foods with a long cook time (15+ minutes). Frozen fries, frozen pizza, frozen chicken patties — these need time to thaw before they can brown anyway. A cold start gives the ice a chance to leave before the surface sets, which actually produces a better result.",
+        "Bacon. Starting cold lets the fat render slowly and evenly. A hot basket sears the outside of the bacon before the fat underneath has liquefied, trapping it inside and making the strip chewy in spots.",
+        "Delicate baked goods. Muffins, small cakes, and anything with a rising batter benefits from a gradual heat ramp. A preheated basket sets the outside crust before the interior has expanded, giving you a dense, lopsided result.",
+        "Large, thick cuts that need long cook times (whole chicken thighs, thick pork chops). The 2–3 minute preheat is a rounding error on a 25-minute cook, and starting cooler gives the heat more time to reach the center.",
+      ],
+    },
+    {
+      kind: "h2",
+      id: "how-long-it-takes",
+      text: "How long preheating actually takes, by model",
+    },
+    {
+      kind: "p",
+      text: "Not all air fryers preheat at the same speed. The wattage, basket size, and insulation all affect how fast the air inside reaches temperature. Here's what to expect:",
+    },
+    {
+      kind: "list",
+      items: [
+        "Compact basket fryers (3–4 qt, 1400–1500W): 2 minutes to 400°F. These are the fastest because the air volume is small and the element is proportionally powerful.",
+        "Mid-size basket fryers (5–6 qt, 1700W): 2–3 minutes to 400°F. The Ninja and Cosori models in this range preheat quickly because of their higher wattage.",
+        "Oven-style air fryers (Breville, Cuisinart): 4–5 minutes. Larger air volume, more metal to heat. These behave more like a small convection oven and genuinely need the preheat.",
+        "Dual-basket fryers (Ninja Foodi DualZone): 2–3 minutes per zone. Each zone preheats independently.",
+      ],
+    },
+    {
+      kind: "callout",
+      tone: "info",
+      text: "Most modern air fryers have a built-in preheat cycle that beeps when ready. If yours doesn't, run it empty at your target temperature for 2–3 minutes before loading food.",
+    },
+    {
+      kind: "h2",
+      id: "the-test",
+      text: "How to tell if your fryer is actually preheated",
+    },
+    {
+      kind: "p",
+      text: "The display says 400°F, but is it really? The air temperature and the basket temperature are two different things. The air might reach target in 90 seconds, but the metal basket and grate take another minute to absorb enough heat to sear on contact. A simple test: hold your hand a few inches above the open basket. If you feel aggressive heat pushing up, both the air and the metal are ready. If it feels warm but not intense, give it another minute.",
+    },
+    {
+      kind: "h2",
+      id: "the-practical-rule",
+      text: "The practical rule",
+    },
+    {
+      kind: "p",
+      text: "If the food is fresh and you want a brown outside, preheat. If the food is frozen and will cook for more than 12 minutes, skip it. If you're unsure, preheat — the downside of preheating when you didn't need to is minimal (slightly faster browning), while the downside of skipping when you should have preheated is real (pale, unevenly cooked food).",
+    },
+    {
+      kind: "p",
+      text: "The calculator's \"check at\" time already accounts for preheating. If you cold-start, add 1–2 minutes to the total time and use the check point as your shake-or-flip cue rather than a doneness indicator.",
+    },
+    {
+      kind: "callout",
+      tone: "warn",
+      text: "Never preheat with parchment paper or air fryer liners in an empty basket. They are light enough for the fan to lift them into the heating element. Always weight liners down with food before starting the cook.",
+    },
+  ],
+  relatedFoodSlugs: ["chicken-wings", "salmon", "french-fries"],
+  relatedGuideSlugs: [
+    "how-air-fryers-actually-work",
+    "common-air-fryer-mistakes",
+  ],
+};
+
 /* ======================================================================
  * Registry + helpers
  * ==================================================================== */
@@ -572,6 +681,7 @@ export const GUIDES: readonly Guide[] = [
   TEMPS_BY_FOOD_TYPE,
   COMMON_MISTAKES,
   CONVERTING_BAKING,
+  PREHEATING,
 ] as const;
 
 export function getGuide(slug: string): Guide | undefined {

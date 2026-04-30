@@ -24,7 +24,7 @@ export default function HomePage() {
         <ContentWithSidebar>
           <Hero />
           <Presets />
-          <AffiliateInline />
+          {/* <AffiliateInline /> */}
           <HowItWorks />
           <GuidesTeaser />
         </ContentWithSidebar>

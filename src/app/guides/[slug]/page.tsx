@@ -9,7 +9,7 @@ import {
   TriangleAlert,
 } from "lucide-react";
 
-import { AffiliateInline } from "@/components/affiliate/AffiliateInline";
+// import { AffiliateInline } from "@/components/affiliate/AffiliateInline";
 import { ContentWithSidebar } from "@/components/affiliate/ContentWithSidebar";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { SiteFooter } from "@/components/site/SiteFooter";
@@ -94,7 +94,7 @@ export default async function GuidePage({
           <Breadcrumb name={guide.title} />
           <Hero guide={guide} />
           <Body sections={guide.sections} />
-          <AffiliateInline />
+          {/* <AffiliateInline /> */}
           <RelatedFoods foods={relatedFoods} />
           <RelatedGuides guides={relatedGuides} />
           <UpdatedStamp updatedAt={guide.updatedAt} />

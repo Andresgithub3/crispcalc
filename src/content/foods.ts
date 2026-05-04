@@ -1317,6 +1317,100 @@ const SHRIMP: FoodPreset = {
   updatedAt: "2026-04-28",
 };
 
+const HAMBURGER_PATTIES: FoodPreset = {
+  slug: "hamburger-patties",
+  name: "Hamburger patties",
+  kicker: "Seared crust, juicy center",
+  defaults: buildDefaults(375, 20, "raw_meat"),
+
+  metaDescription:
+    "Air fryer hamburger patties: exact time and temperature for fresh, frozen, and turkey burgers. How to get a real sear without a grill or a greasy pan.",
+
+  intro:
+    "A hamburger patty is one of the simplest things you can cook and one of the easiest to overcook. The air fryer helps because the fat renders downward through the basket instead of sitting in a pool around the meat, which means the surface browns while the interior stays juicy. Start from a standard 375°F / 20-minute oven recipe for a ¾-inch 80/20 beef patty and the calculator gives you the air fryer equivalent — faster, better crust, less cleanup.",
+
+  tips: [
+    {
+      heading: "Thumb-dent the center.",
+      body: "Press a shallow dimple into the middle of each raw patty. Burgers puff in the center as they cook; the dent counteracts that and you end up with a flat patty that fits a bun instead of a meatball that rolls off it.",
+    },
+    {
+      heading: "Don't touch it for the first half.",
+      body: "The sear forms in the first 4–5 minutes of contact with the hot basket. Flipping early breaks the crust before it sets. Wait until the check time, flip once, and finish. One flip total.",
+    },
+    {
+      heading: "Season the outside, not the mix.",
+      body: "Salt mixed into ground beef tightens the proteins and gives you a sausage texture. Salt the exterior right before cooking — generous kosher salt and coarse black pepper on both sides. The crust will thank you.",
+    },
+    {
+      heading: "Pull 5°F before your target.",
+      body: "Carryover heat pushes a burger another 5°F during a two-minute rest. For medium (160°F final), pull at 155°F. For medium-rare (145°F), pull at 140°F. A thermometer costs less than the meat did.",
+    },
+  ],
+
+  variations: {
+    title: "By meat and starting state",
+    rows: [
+      {
+        label: "Fresh 80/20 beef (¾ inch)",
+        temp: 375,
+        time: 10,
+        note: "Flip at 6. Pull at 155°F for medium.",
+      },
+      {
+        label: "Frozen beef patties",
+        temp: 370,
+        time: 14,
+        note: "No thaw. Flip at 8.",
+      },
+      {
+        label: "Turkey burger",
+        temp: 375,
+        time: 12,
+        note: "Must reach 165°F — no pink.",
+      },
+      {
+        label: "Stuffed / thick (1 inch+)",
+        temp: 360,
+        time: 14,
+        note: "Lower temp lets center cook through.",
+      },
+    ],
+  },
+
+  relatedSlugs: ["meatballs", "bacon", "french-fries"],
+
+  faqs: [
+    {
+      q: "Fresh or frozen — which is better in the air fryer?",
+      a: "Fresh gives you a better sear because the surface is dry and hits browning temperature immediately. Frozen works well but the first few minutes go to thawing, so the crust won't be as developed. For frozen, add 3–4 minutes and don't expect the same bark.",
+    },
+    {
+      q: "What fat percentage works best?",
+      a: "80/20 (80% lean, 20% fat) is the sweet spot. The fat renders through the basket grate and bastes the patty as it leaves. Leaner than 90/10 dries out fast in an air fryer because there's not enough fat to keep the interior moist during the aggressive heat.",
+    },
+    {
+      q: "Can I add cheese during cooking?",
+      a: "Yes — add a slice of cheese in the last 60–90 seconds of cooking. Close the basket and the residual heat plus fan circulation melts it perfectly. Adding it earlier means it slides off or burns on the edges.",
+    },
+    {
+      q: "Why did my patty shrink so much?",
+      a: "Shrinkage comes from fat rendering out and proteins contracting. Make the raw patty about half an inch wider than the bun and press the thumb dent in the center. Shrinkage is normal — about 25% for 80/20 — but a too-small raw patty becomes a slider.",
+    },
+    {
+      q: "Do I need to preheat for burgers?",
+      a: "Yes. A hot basket gives the patty an immediate sear, which is where the flavor comes from. Two minutes at 375°F is enough. Cold-starting a burger means the surface steams instead of browning, and you lose the crust entirely.",
+    },
+    {
+      q: "Can I toast the buns in the air fryer?",
+      a: "Yes — after the patties come out, put the bun halves cut-side up in the basket for 60 seconds at 350°F. The residual heat and fan toast them quickly without drying them out. Don't butter them first; they'll stick.",
+    },
+  ],
+
+  yield: "Serves 2–4",
+  updatedAt: "2026-05-04",
+};
+
 /* ======================================================================
  * Exported array + lookups
  * ==================================================================== */
@@ -1335,6 +1429,7 @@ export const FOOD_PRESETS: readonly FoodPreset[] = [
   CHICKEN_TENDERS,
   CHICKEN_NUGGETS,
   SHRIMP,
+  HAMBURGER_PATTIES,
 ] as const;
 
 export function getFoodPreset(slug: string): FoodPreset | undefined {

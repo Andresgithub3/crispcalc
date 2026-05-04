@@ -671,6 +671,147 @@ const PREHEATING: Guide = {
   ],
 };
 
+const BREADING: Guide = {
+  slug: "breading-that-sticks-in-an-air-fryer",
+  kicker: "The method",
+  title: "How to get breading that actually sticks in an air fryer",
+  description:
+    "The three-step coating method, why your breading falls off, and which coatings hold up in high-speed convection.",
+  lead: "Breading that falls off in the air fryer is the second-most-common complaint after soggy food — and they're related problems. The fan that crisps the coating is the same fan that can lift it off the food if the bond isn't right. The fix is a specific sequence of steps that food manufacturers already use on every frozen breaded product you've ever bought. Here's how to do it at home.",
+  readingTime: 6,
+  updatedAt: "2026-05-04",
+  sections: [
+    {
+      kind: "h2",
+      id: "why-breading-falls-off",
+      text: "Why breading falls off in an air fryer",
+    },
+    {
+      kind: "p",
+      text: "In a deep fryer, hot oil sets the batter or breading within seconds of contact. The coating has no time to slide or separate — it's locked in place almost instantly. In an air fryer, there's no oil bath to set the coating. Instead, dry heat works on the surface over a couple of minutes, and during that window the fan is blowing hard enough to lift anything that isn't firmly attached.",
+    },
+    {
+      kind: "p",
+      text: "The three reasons breading detaches, in order of how common they are: the food's surface was wet, the binding layer (egg wash) was too thin or missing, and the breading itself was too light to stay put under airflow. Fix all three and the problem disappears.",
+    },
+    {
+      kind: "h2",
+      id: "the-three-step-method",
+      text: "The three-step method: flour, egg, crumb",
+    },
+    {
+      kind: "p",
+      text: "This isn't a suggestion — it's the only reliable way to get breading to stay on food in an air fryer. Each layer does a specific job:",
+    },
+    {
+      kind: "list",
+      items: [
+        "Step 1 — Flour. Pat the food dry with paper towels, then dust it in seasoned flour (all-purpose, with salt and pepper). The flour absorbs the last traces of surface moisture and creates a rough, dry surface. Without this step, the egg wash beads up and slides off instead of coating evenly.",
+        "Step 2 — Egg wash. Beat an egg with a tablespoon of water or milk. Dip the floured food, making sure every surface is coated. The egg is the glue — it bonds the flour below to the crumbs above. A thin, even coat is better than a thick pool that drips.",
+        "Step 3 — Crumbs. Press the food into the crumb coating firmly. Don't just sprinkle — push the crumbs into the egg with your palm so they embed, not just sit on top. Shake off loose crumbs gently. Anything that isn't stuck at this stage won't survive the fan.",
+      ],
+    },
+    {
+      kind: "callout",
+      tone: "info",
+      text: "Use one hand for dry steps (flour, crumbs) and the other hand for wet steps (egg wash). This keeps you from building up a thick paste on your fingers that wastes breading and makes a mess.",
+    },
+    {
+      kind: "h2",
+      id: "which-coatings-work",
+      text: "Which coatings hold up — and which don't",
+    },
+    {
+      kind: "h3",
+      text: "Best performers",
+    },
+    {
+      kind: "list",
+      items: [
+        "Panko breadcrumbs — the gold standard. The large, jagged flakes lock together and create air pockets that crisp aggressively. They're also heavy enough that the fan doesn't lift them.",
+        "Crushed cornflakes — similar to panko but with a slightly sweeter, more toasted flavor. Crush them in a zip-lock bag, not a food processor, so you get irregular shards instead of dust.",
+        "Seasoned flour (double-dipped) — for a thinner coating like fried chicken. Flour, egg, flour again. The second flour layer sets into a craggy crust that browns well without added crumbs.",
+        "Parmesan crust — finely grated Parmesan mixed with panko at a 1:1 ratio. The cheese melts and fuses the crumbs together into a solid shell. Excellent on chicken and fish.",
+      ],
+    },
+    {
+      kind: "h3",
+      text: "Poor performers",
+    },
+    {
+      kind: "list",
+      items: [
+        "Regular breadcrumbs — too fine, too uniform. They form a dense layer that doesn't crisp well and lifts as a single sheet when the bond fails.",
+        "Wet batters (tempura, beer batter) — these were designed for oil immersion. In an air fryer, the batter sags, drips through the basket grate, and either burns on the heating element or slides off the food entirely.",
+        "Coconut flakes (unsweetened, large) — they toast beautifully but are too light on their own. Mix with panko at a 1:1 ratio to add weight and structure.",
+      ],
+    },
+    {
+      kind: "h2",
+      id: "the-oil-spray",
+      text: "The oil spray is not optional",
+    },
+    {
+      kind: "p",
+      text: "After breading and before cooking, give the coated food a light spray of oil on both sides. This does two things: it browns the breading faster (oil conducts heat better than dry air alone), and it helps the outermost crumbs fuse together into a connected sheet rather than a loose collection of individual flakes.",
+    },
+    {
+      kind: "p",
+      text: "Use a pump sprayer or an oil mister with avocado or canola oil. Aerosol cooking sprays (like PAM) contain propellants that can damage non-stick coatings over time. Two seconds per side is enough — you want a mist, not a drench.",
+    },
+    {
+      kind: "h2",
+      id: "the-rest-step",
+      text: "Let it set before cooking",
+    },
+    {
+      kind: "p",
+      text: "After breading, let the coated food sit on a wire rack for 10 minutes at room temperature. The egg wash dries slightly and the bond between the layers strengthens. This is the step most home cooks skip, and it's the step that makes the biggest difference. Commercial frozen products get this rest during flash-freezing — it's why store-bought breaded chicken holds its coating better than homemade usually does.",
+    },
+    {
+      kind: "callout",
+      tone: "warn",
+      text: "If you're in a hurry, refrigerate the breaded food uncovered for 15 minutes instead. The cold air accelerates the drying and gives you most of the benefit in less time.",
+    },
+    {
+      kind: "h2",
+      id: "cooking-breaded-food",
+      text: "Air fryer settings for breaded food",
+    },
+    {
+      kind: "p",
+      text: "Breaded food wants moderate heat — 375–390°F — not the 400°F+ you'd use for plain proteins. Higher temperatures brown the coating before the food inside is cooked, and the breading can go from golden to burnt in under two minutes. The calculator's food-type adjustments account for this when you select the right category.",
+    },
+    {
+      kind: "list",
+      items: [
+        "Flip once, at the check time. Every flip risks the coating separating, so minimize handling. Use a flat spatula, not tongs — tongs crush breading at the grip point.",
+        "Don't shake the basket. Shaking works for fries and wings; it destroys breaded food. The pieces tumble against each other and knock crumbs loose.",
+        "Leave space between pieces. Breaded items that touch will fuse together, and pulling them apart tears the coating off both.",
+      ],
+    },
+    {
+      kind: "h2",
+      id: "troubleshooting",
+      text: "Troubleshooting",
+    },
+    {
+      kind: "list",
+      items: [
+        "Breading slides off in a sheet — the food was too wet when you floured it. Pat drier next time, and make sure the flour step is thorough.",
+        "Coating is pale and soft — not enough oil spray, or the temperature was too low. Bump up 10°F and make sure you misted both sides.",
+        "Crumbs are burning but the food is raw — temperature too high. Drop to 370°F and add 2–3 minutes. The crumbs need time alongside the protein, not ahead of it.",
+        "Breading is perfect on top, bare on the bottom — you forgot to flip. The basket side needs a turn to crisp; it won't brown on its own because it's sitting on a grate, not in oil.",
+      ],
+    },
+  ],
+  relatedFoodSlugs: ["chicken-tenders", "shrimp", "chicken-nuggets"],
+  relatedGuideSlugs: [
+    "common-air-fryer-mistakes",
+    "preheating-your-air-fryer",
+  ],
+};
+
 /* ======================================================================
  * Registry + helpers
  * ==================================================================== */
@@ -682,6 +823,7 @@ export const GUIDES: readonly Guide[] = [
   COMMON_MISTAKES,
   CONVERTING_BAKING,
   PREHEATING,
+  BREADING,
 ] as const;
 
 export function getGuide(slug: string): Guide | undefined {
